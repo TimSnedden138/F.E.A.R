@@ -25,9 +25,9 @@ public:
 	{
 		const int fontSize = 20;
 
-		int xPos = GetScreenWidth() / 2 - MeasureText("TESTING GAMES", fontSize) / 2;
+		int xPos = GetScreenWidth() / 2 - MeasureText("THE COMPANY", fontSize) / 2;
 		int yPos = GetScreenHeight() * 0.5f + (sinf(duration * 4.0f) * (GetScreenHeight() * 0.3f));
-		DrawText("TESTING GAMES", xPos, yPos, fontSize, DARKBLUE);
+		DrawText("THE COMPANY", xPos, yPos, fontSize, RED);
 	}
 
 	virtual GameStates next()

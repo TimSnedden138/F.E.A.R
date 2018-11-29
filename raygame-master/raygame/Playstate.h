@@ -1,5 +1,4 @@
 #pragma once
-
 #include "gamestate.h"
 #include"RecLibary.h"
 #include"CLibary.h"
@@ -11,13 +10,28 @@ class Playstate : public gamestate
 	GameStates nextState;
 	float mousex = 0;
 	float mousey = 0;
-	bool bullet = false;
+	float playerx = 250;
+	float playery = 250;
+	float enemyRx = 750;
+	float enemyRy = 450;
+	float enemyGx = 775;
+	float enemyGy = 360;
+	float enemyBx = 725;
+	float enemyBy = 50;
+	bool bulletR = false;
+	bool redbullet = false;
+	bool greenbullet = false;
+	bool bluebullet = false;
+	bool bulletG = false;
+	bool bulletB = false;
 	float rot = 0;
-	Vector2 Playerposition{ 250,250 };
-	Vector2 Ballposition{ 250,250 };
-	Vector2 Destination{ 800,650 };
+	float time = 60;
 	int bulletSpeed = 300;
-	float bulletAmount = 0;
+	int bulletAmountR = 0;
+	int Health = 175;
+	int bulletAmountG = 0;
+	int bulletAmountB= 0;
+	Texture2D background = LoadTexture("Resources/Background.png");
 
 
 public:
@@ -29,52 +43,178 @@ public:
 
 	virtual void tick(float deltaTime)
 	{
-		rot = rand() % 360;
-		DrawText(std::to_string(bulletAmount).c_str(), 50, 630, 10, WHITE);
-		mousex = GetMouseX();
-		mousey = GetMouseY();
-		if (IsKeyDown(KEY_W)) {
-			Playerposition.y--;
-		}
-		if (IsKeyDown(KEY_S)) {
-			Playerposition.y++;
-		}
-		if (IsKeyDown(KEY_A)) {
-			Playerposition.x--;
-		}
-		if (IsKeyDown(KEY_D)) {
-			Playerposition.x++;
-		}
-		if (IsKeyPressed(KEY_SPACE)&& bulletAmount != 6) {
-			bullet = true;
-			Ballposition.x = mousex;
-			Ballposition.y = mousey;
-			bulletAmount++;
-		}
-		if (IsKeyPressed(KEY_R) && bulletAmount == 6) {
-			bulletAmount = 0;
-			bullet = false;
-		}
-		if (bullet == true && bulletAmount != 6) {
-			if (Ballposition.x != Destination.x) {
-				Ballposition.x += bulletSpeed * deltaTime;
-				//DrawCircle(Ballposition.x, Ballposition.y, 5, WHITE);
-				DrawPoly({ Ballposition.x,Ballposition.y }, 4, 5, 0, WHITE);
+		time = time - GetFrameTime();
+		if (time > 0) {
+			DrawTextureEx(background, { 0,0 }, 0, 2.25, WHITE);
+			rot = rand() % 360;
+			DrawText(std::to_string(bulletAmountR).c_str(), 100, 630, 20, RED);
+			DrawText(std::to_string(bulletAmountG).c_str(), 50, 630, 20, GREEN);
+			DrawText(std::to_string(bulletAmountB).c_str(), 150, 630, 20, BLUE);
+			DrawText(std::to_string(Health).c_str(), 95, 40, 20, LIGHTBLUE);
+			DrawText(std::to_string(time).c_str(), 85,80, 20, RED);
+			DrawText("Health: ", 25, 40,20, LIGHTBLUE);
+			DrawText("TIME: ", 25, 80, 20, RED);
+			mousex = GetMouseX();
+			mousey = GetMouseY();
+			if (IsKeyDown(KEY_W)) {
+				Playerposition.y--;
+				playery--;
+			}
+			if (IsKeyDown(KEY_S)) {
+				Playerposition.y++;
+				playery++;
+			}
+			if (IsKeyDown(KEY_A)) {
+				Playerposition.x--;
+				playerx--;
+			}
+			if (IsKeyDown(KEY_D)) {
+				Playerposition.x++;
+				playerx++;
 			}
 
+			//RED BULLET
+			if (IsMouseButtonPressed(MOUSE_MIDDLE_BUTTON) && bulletAmountR != 2) {
+				bulletR = true;
+				BallpositionR.x = mousex;
+				BallpositionR.y = mousey;
+				bulletAmountR++;
+				redbullet = false;
+			}
+			if (IsKeyPressed(KEY_R) && bulletAmountR == 2) {
+				bulletAmountR = 0;
+				bulletR = false;
+			}
+			if (bulletR == true && bulletAmountR != 2) {
+				if (BallpositionR.x != OffScreen.x) {
+					BallpositionR.x += bulletSpeed * deltaTime;
+					DrawPoly({ BallpositionR.x,BallpositionR.y }, 4, 5, 0, RED);
+				}
+
+			}
+			if (BallpositionR.y >= OffScreen.y && bulletAmountR == 2) {
+				bulletR = false;
+			}
+			//BLUE BULLET
+			if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && bulletAmountB != 6) {
+				bulletB = true;
+				BallpositionB.x = mousex;
+				BallpositionB.y = mousey;
+				bulletAmountB++;
+				bluebullet = false;
+			}
+			if (IsKeyPressed(KEY_R) && bulletAmountB == 6) {
+				bulletAmountB = 0;
+				bulletB = false;
+			}
+			if (bulletB == true && bulletAmountB != 6) {
+				if (BallpositionB.x != OffScreen.x) {
+					BallpositionB.x += bulletSpeed * deltaTime;
+					DrawPoly({ BallpositionB.x,BallpositionB.y }, 4, 5, 0, BLUE);
+				}
+
+			}
+			if (BallpositionB.y >= OffScreen.y && bulletAmountB == 6) {
+				bulletB = false;
+			}
+			//GREEN BULLET
+			if (IsMouseButtonPressed(MOUSE_RIGHT_BUTTON) && bulletAmountG != 15) {
+				bulletG = true;
+				BallpositionG.x = mousex;
+				BallpositionG.y = mousey;
+				bulletAmountG++;
+				greenbullet = false;
+
+			}
+			if (IsKeyPressed(KEY_R) && bulletAmountG == 15) {
+				bulletAmountG = 0;
+				bulletG = false;
+			}
+			if (bulletG == true && bulletAmountG != 15) {
+				if (BallpositionG.x != OffScreen.x) {
+					BallpositionG.x += bulletSpeed * deltaTime;
+					DrawPoly({ BallpositionG.x,BallpositionG.y }, 4, 5, 0, GREEN);
+				}
+
+			}
+			if (BallpositionG.y >= OffScreen.y && bulletAmountG == 15) {
+				bulletG = false;
+			}
+			//RED AI
+			if (enemypositionR.x > Playerposition.x) {
+				enemypositionR.x--;
+				enemyRx--;
+			}
+			else if (enemypositionR.x < Playerposition.x) {
+				enemypositionR.x++;
+				enemyRx++;
+			}
+			if (enemypositionR.y > Playerposition.y) {
+				enemypositionR.y--;
+				enemyRy--;
+			}
+			else if (enemypositionR.y < Playerposition.y) {
+				enemypositionR.y++;
+				enemyRy++;
+			}
+			if (CheckCollisionCircles({playerx,playery},5,{enemyRx,enemyRy},5) == true){
+				Health - 50;
+			}
+			//GREEN AI
+			if (enemypositionG.x > Playerposition.x) {
+				enemypositionG.x--;
+				enemyGx--;
+			}
+			else if (enemypositionG.x < Playerposition.x) {
+				enemypositionG.x++;
+				enemyGx++;
+			}
+			if (enemypositionG.y > Playerposition.y) {
+				enemypositionG.y--;
+				enemyGy--;
+			}
+			if (enemypositionG.y < Playerposition.y) {
+				enemypositionG.y++;
+				enemyGy++;
+			}
+			//BLUE AI
+			else if (enemypositionB.y < Playerposition.y) {
+				enemypositionG.y++;
+			}
+			if (enemypositionB.x > Playerposition.x) {
+				enemypositionB.x--;
+				enemyBx--;
+			}
+			else if (enemypositionB.x < Playerposition.x) {
+				enemypositionB.x++;
+				enemyBx++;
+			}
+			if (enemypositionB.y > Playerposition.y) {
+				enemypositionB.y--;
+				enemyGy--;
+			}
+			else if (enemypositionB.y < Playerposition.y) {
+				enemypositionB.y++;
+				enemyBy++;
+			}
+			//DRAWING FOR THE GAME
+			DrawCircle(enemypositionR.x, enemypositionR.y, 5, RED);
+			DrawCircle(enemypositionG.x, enemypositionG.y, 5, GREEN);
+			DrawCircle(enemypositionB.x, enemypositionB.y, 5, BLUE);
+			DrawCircle(Playerposition.x, Playerposition.y, 5, WHITE);
 		}
-		if (Ballposition.y >= Destination.y && bulletAmount == 6) {
-			bullet = false;
+		if (time <= 0) {
+			DrawText("YOU WIN", 300, 300, 80, RED);
 		}
-	
-		DrawCircle(Playerposition.x,Playerposition.y,5,DARKBLUE);
 	}
 
 	virtual void draw()
 	{
 		//Game Screen
-			DrawRectangleLinesEx(topScreenG, 3, RED);
-			DrawText("GAME STATE", 315, 0, 25, WHITE);
+		if (time <= 0) {
+			DrawRectangleLinesEx(topScreenW, 3, GREEN);
+			DrawText("WIN STATE", 315, 0, 25, WHITE);
+		}
 	}
 
 	virtual GameStates next()

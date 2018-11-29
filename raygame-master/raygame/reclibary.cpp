@@ -1,14 +1,24 @@
 #include"RecLibary.h"
 Rectangle back{ 0, 400, 57,50 };
 Rectangle start{ 275, 150, 290,50 };
-Rectangle options{ 275, 250, 200,50 };
 Rectangle leavingGame{ 275, 350, 410,45 };
-Rectangle story{ 275, 450, 110,40 };
+Rectangle story{ 275, 250, 110,40 };
 Rectangle LeavePause{ 0, 630,70,70 };
 Rectangle topScreenS{ 310,0,175,25 };
 Rectangle topScreenG{ 310,0,175,25 };
+Rectangle topScreenW{ 310,0,155,25 };
+Rectangle topScreenL{ 310,0,175,25 };
 Rectangle topScreenO{ 310,0,120,25 };
 Rectangle topScreenSt{ 310,0,90,25 };
 Rectangle topScreenE{ 245,0,320,25 };
 Rectangle YES{ 250, 550,65,35 };
 Rectangle NO{ 450, 550,45,35 };
+Vector2 Playerposition{ 250,250 };
+Vector2 enemypositionR{ 750,450 };
+Vector2 enemypositionG{ 775,360 };
+Vector2 enemypositionB{ 725,50 };
+Vector2 BallpositionR{ 250,250 };
+Vector2 BallpositionG{ 250,250 };
+Vector2 BallpositionB{ 250,250 };
+Vector2 OffScreen{ 800,650 };
+Vector2 EnemySpawn{ 790,650 };

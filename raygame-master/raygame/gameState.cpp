@@ -1,5 +1,4 @@
 #include "Gamestate.h"
-#include"optionstate.h"
 #include"storystate.h"
 #include"exitstate.h"
 #include"pausestate.h"
@@ -12,7 +11,6 @@ void setupGameState(gamestate *&ptr, GameStates newState)
 	switch (newState)
 	{
 	case GameStates::NONE:  ptr = new gamestate();  break;
-	case GameStates::OPTIONS: ptr = new optionstate(); break;
 	case GameStates::STORY:  ptr = new storystate();  break;
 	case GameStates::SPLASH:   ptr = new splashstate();   break;
 	case GameStates::EXIT: ptr = new exitstate(); break;
