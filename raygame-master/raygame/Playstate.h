@@ -54,6 +54,8 @@ public:
 			DrawText(std::to_string(time).c_str(), 85,80, 20, RED);
 			DrawText("Health: ", 25, 40,20, LIGHTBLUE);
 			DrawText("TIME: ", 25, 80, 20, RED);
+			std::cout << "EnemyR: "<< enemyRx << "," << enemyRy << std::endl;
+			std::cout <<"Player: "<< playerx << "," << playery << std::endl;
 			mousex = GetMouseX();
 			mousey = GetMouseY();
 			if (IsKeyDown(KEY_W)) {
@@ -157,8 +159,8 @@ public:
 				enemypositionR.y++;
 				enemyRy++;
 			}
-			if (CheckCollisionCircles({playerx,playery},5,{enemyRx,enemyRy},5) == true){
-				Health - 50;
+			if (playerx == enemyRx && playery == enemyRy){
+				Health--;
 			}
 			//GREEN AI
 			if (enemypositionG.x > Playerposition.x) {

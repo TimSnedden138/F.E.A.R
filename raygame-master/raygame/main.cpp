@@ -20,7 +20,7 @@ int main()
 {
 	// Initialization
 	//--------------------------------------------------------------------------------------
-	InitWindow(800,650, "TESTING");
+	InitWindow(800,650, "F.E.A.R V1");
 	SetTargetFPS(60);
 
 	gamestate * stateInstance = new splashstate();
