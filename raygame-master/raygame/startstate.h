@@ -32,8 +32,6 @@ public:
 		if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec({ mousex,mousey }, leavingGame)) {
 			nextState = EXIT;
 		}
-		//if click on option box
-		  // set nextState to option
 	}
 
 	virtual void draw() {

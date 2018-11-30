@@ -139,12 +139,12 @@
     <ClInclude Include="CLibary.h" />
     <ClInclude Include="exitstate.h" />
     <ClInclude Include="GameState.h" />
-    <ClInclude Include="pausestate.h" />
     <ClInclude Include="Playstate.h" />
     <ClInclude Include="RecLibary.h" />
     <ClInclude Include="splashstate.h" />
     <ClInclude Include="startstate.h" />
     <ClInclude Include="storystate.h" />
+    <ClInclude Include="Values.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

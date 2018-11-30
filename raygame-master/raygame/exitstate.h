@@ -24,10 +24,10 @@ public:
 		mousex = GetMouseX();
 		mousey = GetMouseY();
 		if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec({ mousex,mousey }, YES)) {
-			nextState = START;
-		}
-		if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec({ mousex,mousey }, NO)) {
 			timeToLeave = true;
+		}
+		if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec({ mousex,mousey }, NO)) {			
+			nextState = START;
 		}
 	}
 
