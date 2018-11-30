@@ -35,6 +35,7 @@ public:
 	}
 
 	virtual void draw() {
+		DrawText("F.E.A.R IS YOUR ENEMY", 245, 0, 40, LIGHTGREEN);
 		DrawRectangleLinesEx(start, 5, DARKGRAY);
 		DrawRectangleLinesEx(start, 1, RED);
 		DrawText("START GAME", 285, 155, 40, WHITE);
