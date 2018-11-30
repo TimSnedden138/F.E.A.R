@@ -30,7 +30,6 @@ int main()
 	while (!WindowShouldClose() && !stateInstance->shouldExit()) // Detect window close button or ESC key
 	{
 		// Update
-		stateInstance->tick(GetFrameTime());
 		GameStates nextState = stateInstance->next();
 		if (nextState != currentState)
 		{
@@ -47,6 +46,7 @@ int main()
 		ClearBackground(BLACK);
 
 		stateInstance->draw();
+		stateInstance->tick(GetFrameTime());
 
 		EndDrawing();
 		//----------------------------------------------------------------------------------
