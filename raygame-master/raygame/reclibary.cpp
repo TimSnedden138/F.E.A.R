@@ -1,8 +1,8 @@
 #include"RecLibary.h"
 Rectangle back{ 0, 400, 57,50 };
-Rectangle start{ 275, 150, 290,50 };
-Rectangle leavingGame{ 275, 350, 410,45 };
-Rectangle story{ 275, 250, 110,40 };
+Rectangle start{ 275, 150, 180,50 };
+Rectangle leavingGame{ 275, 350, 340,45 };
+Rectangle story{ 275, 250, 90,40 };
 Rectangle LeavePause{ 0, 630,70,70 };
 Rectangle topScreenS{ 310,0,175,25 };
 Rectangle topScreenG{ 310,0,175,25 };

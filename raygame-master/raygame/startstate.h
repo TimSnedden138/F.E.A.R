@@ -16,7 +16,6 @@ public:
 	{
 		readyForNext = false;
 		nextState = START;
-
 	}
 
 	virtual void tick(float deltaTime)
@@ -35,16 +34,21 @@ public:
 	}
 
 	virtual void draw() {
-		DrawText("F.E.A.R IS YOUR ENEMY", 245, 0, 40, LIGHTGREEN);
+		Font fontTtf = LoadFont("resources/test.ttf");
+		const char msgTtfT[22] = "F.E.A.R IS YOUR ENEMY";
+		const char msgTtfStart[11] = "START GAME";
+		const char msgTtfStory[6] = "Story";
+		const char msgTtfExit[21] = "LEAVE THIS NIGHTMARE";
+		DrawTextEx(fontTtf, msgTtfT, { 245,0}, 40, 2, LIME);
+		DrawTextEx(fontTtf, msgTtfStart, { 285, 155}, 40, 2, WHITE);
+		DrawTextEx(fontTtf, msgTtfStory, { 285, 250 }, 40, 2, WHITE);
+		DrawTextEx(fontTtf, msgTtfExit, { 285, 350 }, 40, 2, WHITE);
 		DrawRectangleLinesEx(start, 5, DARKGRAY);
 		DrawRectangleLinesEx(start, 1, RED);
-		DrawText("START GAME", 285, 155, 40, WHITE);
 		DrawRectangleLinesEx(story, 5, DARKGRAY);
 		DrawRectangleLinesEx(story, 1.25, WHITE);
-		DrawText("Story", 285, 250, 30, WHITE);
 		DrawRectangleLinesEx(leavingGame, 5, DARKGRAY);
 		DrawRectangleLinesEx(leavingGame, 1, BLUE);
-		DrawText("LEAVE THIS NIGHTMARE", 285, 350, 30, WHITE);
 	}
 	virtual GameStates next()
 	{

@@ -25,7 +25,7 @@ bool bluebullet = false;
 bool bulletG = false;
 bool bulletB = false;
 float rot = 0;
-float time = 60;
+float time = 180;
 int bulletSpeed = 300;
 int bulletAmountR = 0;
 int Health;
