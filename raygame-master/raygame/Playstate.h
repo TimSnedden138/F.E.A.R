@@ -129,6 +129,10 @@ public:
 		}
 		if (FEAR >= 15) {
 			HideCursor();
+			DrawText("X: ", 25, 610, 20, WHITE);
+			DrawText("Y: ", 160, 610, 20, WHITE);
+			DrawText(std::to_string(mousex).c_str(), 45, 610, 20, LIME);
+			DrawText(std::to_string(mousey).c_str(), 180, 610, 20, LIME);
 		}
 	}
 
@@ -147,13 +151,9 @@ public:
 			DrawText(std::to_string(Health).c_str(), 95, 40, 20, LIGHTBLUE);
 			DrawText(std::to_string(time).c_str(), 85, 80, 20, RED);
 			DrawText(std::to_string(FEAR).c_str(), 85, 120, 20, RED);
-			DrawText(std::to_string(mousex).c_str(), 45, 610, 20, LIME);
-			DrawText(std::to_string(mousey).c_str(), 180, 610, 20, LIME);
 			DrawText("Health: ", 25, 40, 20, LIGHTBLUE);
 			DrawText("TIME: ", 25, 80, 20, RED);
 			DrawText("FEAR: ", 25, 120, 20, RED);
-			DrawText("X: ", 25, 610, 20, WHITE);
-			DrawText("Y: ", 160, 610, 20, WHITE);
 			DrawTextureEx(enenmyR, { enemypositionR.x,enemypositionR.y },0, .15, LIGHTRED);
 			DrawTextureEx(enenmyB, { enemypositionB.x,enemypositionB.y }, 0, .15, LIGHTBLUE);
 			DrawTextureEx(enenmyG, { enemypositionG.x,enemypositionG.y }, 0, .15, LIGHTGREEN);
