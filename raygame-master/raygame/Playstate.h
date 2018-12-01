@@ -149,22 +149,21 @@ public:
 
 		}
 		if (time <= 0) {
-			DrawText("YOU WIN", 300, 300, 80, RED);
+			std::cout << "YOU WIN CONGRATS PRESS ESC TO CLOSE" << std::endl;
 			system("pause");
 		}
 		if (FEAR == 40){
-			DrawText("YOU WIN", 300, 300, 80, RED);
+			std::cout << "YOU WIN CONGRATS PRESS ESC TO CLOSE" << std::endl;
 			system("pause");
 		}
 		if (Health == 0) {
-			DrawText("YOU LOSE", 300, 300, 80, RED);
+			std::cout << "YOU LOSE PRESS ESC TO CLOSE" << std::endl;
 			system("pause");
 
 		}
 		if (FEAR == -20) {
-			DrawText("YOU LOSE", 300, 300, 80, RED);
+			std::cout << "YOU LOSE PRESS ESC TO CLOSE" << std::endl;
 			system("pause");
-
 
 		}
 		if (FEAR >= 15) {
