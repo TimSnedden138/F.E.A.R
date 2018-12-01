@@ -47,10 +47,8 @@ public:
 			DrawText(std::to_string(bulletAmountR).c_str(), 100, 630, 20, RED);
 			DrawText(std::to_string(bulletAmountG).c_str(), 50, 630, 20, GREEN);
 			DrawText(std::to_string(bulletAmountB).c_str(), 150, 630, 20, BLUE);
-			DrawText(std::to_string(Health).c_str(), 95, 40, 20, LIGHTBLUE);
 			DrawText(std::to_string(time).c_str(), 85, 80, 20, RED);
 			DrawText(std::to_string(FEAR).c_str(), 85, 120, 20, RED);
-			DrawText("Health: ", 25, 40, 20, LIGHTBLUE);
 			DrawText("TIME: ", 25, 80, 20, RED);
 			DrawText("FEAR: ", 25, 120, 20, RED);
 			DrawTextureEx(enenmyR, { enemypositionR.x,enemypositionR.y }, 0, .15, LIGHTRED);
@@ -152,16 +150,21 @@ public:
 		}
 		if (time <= 0) {
 			DrawText("YOU WIN", 300, 300, 80, RED);
+			system("pause");
 		}
 		if (FEAR == 40){
 			DrawText("YOU WIN", 300, 300, 80, RED);
-
+			system("pause");
 		}
 		if (Health == 0) {
 			DrawText("YOU LOSE", 300, 300, 80, RED);
+			system("pause");
+
 		}
 		if (FEAR == -20) {
 			DrawText("YOU LOSE", 300, 300, 80, RED);
+			system("pause");
+
 
 		}
 		if (FEAR >= 15) {
